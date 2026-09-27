@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Home Planner — PocketSmart AI{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <span class="eyebrow">HOME PLANNER</span>
+    <h1>Create your space, <span class="gradient-text">your way.</span></h1>
+    <p>Tell us about your room and budget to receive a personalized plan.</p>
+</section>
+
+<div class="planner-layout">
+    <section class="form-card planner-card">
+        <form data-recommendation-form action="/generate-home" method="post">
+            <label for="room_type">Room type</label>
+            <select id="room_type" name="room_type" required>
+                <option value="Bedroom">Bedroom</option>
+                <option value="Living room">Living room</option>
+                <option value="Kitchen">Kitchen</option>
+                <option value="Study room">Study room</option>
+                <option value="Dining room">Dining room</option>
+            </select>
+
+            <label for="budget">Total budget (₹)</label>
+            <input id="budget" name="budget" type="number"
+                   min="1" max="100000000" step="1" required>
+
+            <label for="style">Preferred style</label>
+            <select id="style" name="style" required>
+                <option value="Minimalist">Minimalist</option>
+                <option value="Modern">Modern</option>
+                <option value="Traditional">Traditional</option>
+                <option value="Bohemian">Bohemian</option>
+                <option value="Scandinavian">Scandinavian</option>
+            </select>
+
+            <label for="notes">Additional preferences</label>
+            <textarea id="notes" name="notes" rows="4"
+                      maxlength="500"
+                      placeholder="Room size, colors, needs..."></textarea>
+
+            <p class="form-message" aria-live="polite"></p>
+            <button class="button button-full" type="submit">
+                Generate my home plan
+            </button>
+        </form>
+    </section>
+
+    <aside class="planner-aside">
+        <div class="aside-icon">🏡</div>
+        <h2>A room that feels like you.</h2>
+        <p>Get a budget breakdown and practical ideas for furnishing,
+           lighting, storage, and decor.</p>
+        <div class="mini-tip">
+            <strong>Smart tip</strong>
+            <p>Reserve part of your budget for delivery, installation,
+               and unexpected costs.</p>
+        </div>
+    </aside>
+</div>
+
+<section id="recommendation-result" class="result-container"></section>
+{% endblock %}

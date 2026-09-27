@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — PocketSmart AI{% endblock %}
+
+{% block content %}
+<section class="dashboard-heading">
+    <div>
+        <span class="eyebrow">YOUR PERSONAL WORKSPACE</span>
+        <h1>Hello, {{ user.name }} <span>✦</span></h1>
+        <p class="muted">What would you like to plan today?</p>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">{{ recommendation_count }}</span>
+        <span class="stat-label">Saved recommendations</span>
+    </div>
+</section>
+
+<section class="feature-grid dashboard-features">
+    <a class="feature-card feature-link" href="/home">
+        <div class="feature-icon">🏡</div>
+        <h3>Home planner</h3>
+        <p>Plan a room with your budget and preferred style.</p>
+        <span class="card-link">Create a plan →</span>
+    </a>
+
+    <a class="feature-card feature-link" href="/party">
+        <div class="feature-icon">🎉</div>
+        <h3>Party planner</h3>
+        <p>Estimate expenses for your next celebration.</p>
+        <span class="card-link">Plan an event →</span>
+    </a>
+
+    <a class="feature-card feature-link" href="/jewelry">
+        <div class="feature-icon">💎</div>
+        <h3>Jewelry assistant</h3>
+        <p>Find accessory ideas for your occasion.</p>
+        <span class="card-link">Explore ideas →</span>
+    </a>
+</section>
+
+<section class="history-section">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">YOUR ACTIVITY</span>
+            <h2>Recent recommendations</h2>
+        </div>
+        <a href="/history" data-history-link>View history</a>
+    </div>
+
+    {% if history %}
+        <div class="history-list">
+            {% for item in history %}
+                <a class="history-item" href="/result/{{ item.id }}">
+                    <span class="history-icon">
+                        {% if item.category == "home" %}🏡
+                        {% elif item.category == "party" %}🎉
+                        {% else %}💎{% endif %}
+                    </span>
+                    <span class="history-copy">
+                        <strong>{{ item.category|title }} recommendation</strong>
+                        <small>{{ item.created_at }}</small>
+                    </span>
+                    <span class="history-arrow">→</span>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <span>✦</span>
+            <h3>Your ideas will appear here</h3>
+            <p>Create your first recommendation to get started.</p>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

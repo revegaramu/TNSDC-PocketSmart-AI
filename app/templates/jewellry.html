@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Jewelry Assistant — PocketSmart AI{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <span class="eyebrow">JEWELRY ASSISTANT</span>
+    <h1>Find your <span class="gradient-text">finishing touch.</span></h1>
+    <p>Explore jewelry ideas based on your outfit, occasion, and budget.</p>
+</section>
+
+<div class="planner-layout">
+    <section class="form-card planner-card">
+        <form data-recommendation-form
+              data-image-form
+              action="/generate-jewelry-with-image"
+              method="post"
+              enctype="multipart/form-data">
+
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="occasion" required>
+                <option value="Everyday">Everyday</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Festival">Festival</option>
+                <option value="Party">Party</option>
+                <option value="Formal event">Formal event</option>
+            </select>
+
+            <label for="outfit_color">Outfit color</label>
+            <input id="outfit_color" name="outfit_color"
+                   type="text" maxlength="60"
+                   placeholder="Maroon, blue, green..." required>
+
+            <label for="budget">Jewelry budget (₹)</label>
+            <input id="budget" name="budget" type="number"
+                   min="1" max="100000000" step="1" required>
+
+            <label for="jewelry_type">Preferred jewelry</label>
+            <select id="jewelry_type" name="jewelry_type">
+                <option value="Any">Any</option>
+                <option value="Gold">Gold</option>
+                <option value="Silver">Silver</option>
+                <option value="Imitation">Imitation jewelry</option>
+                <option value="Pearl">Pearl</option>
+                <option value="Traditional">Traditional</option>
+                <option value="Minimal">Minimal</option>
+            </select>
+
+            <label for="image">Outfit image (optional)</label>
+            <input id="image" name="image" type="file"
+                   accept="image/jpeg,image/png,image/webp">
+            <p class="form-hint">JPEG, PNG, or WebP. Maximum 5 MB.</p>
+
+            <label for="notes">Additional preferences</label>
+            <textarea id="notes" name="notes" rows="3"
+                      maxlength="500"
+                      placeholder="Neckline, preferred design, etc."></textarea>
+
+            <p class="form-message" aria-live="polite"></p>
+            <button class="button button-full" type="submit">
+                Generate jewelry ideas
+            </button>
+        </form>
+    </section>
+
+    <aside class="planner-aside">
+        <div class="aside-icon">💎</div>
+        <h2>Style that suits your occasion.</h2>
+        <p>Get coordinated jewelry suggestions and a budget breakdown.</p>
+        <div class="mini-tip">
+            <strong>Smart tip</strong>
+            <p>Consider the outfit neckline, occasion, comfort, and
+               the material's care requirements.</p>
+        </div>
+    </aside>
+</div>
+
+<section id="recommendation-result" class="result-container"></section>
+{% endblock %}
