@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}PocketSmart AI — Smart Planning{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-copy">
+        <span class="eyebrow">YOUR PERSONAL AI PLANNING ASSISTANT</span>
+        <h1>Make your budget work <span class="gradient-text">smarter.</span></h1>
+        <p>
+            Plan your home, organize your next celebration, and discover
+            jewelry ideas with recommendations tailored to your budget.
+        </p>
+        <div class="hero-actions">
+            <a class="button" href="/register">Start for free</a>
+            <a class="button button-secondary" href="/login">I have an account</a>
+        </div>
+        <div class="trust-line">
+            <span>✓ Budget-aware ideas</span>
+            <span>✓ Personalized plans</span>
+            <span>✓ Saved history</span>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="visual-card visual-main">
+            <span class="visual-icon">✦</span>
+            <p class="visual-label">Your smart plan</p>
+            <h2>Big ideas.<br>Thoughtful budgets.</h2>
+            <div class="visual-bar"><span></span></div>
+            <p class="muted">A plan made around you.</p>
+        </div>
+        <div class="floating-card floating-top">🏡 Home ideas</div>
+        <div class="floating-card floating-bottom">🎉 Party planner</div>
+    </div>
+</section>
+
+<section class="feature-grid">
+    <article class="feature-card">
+        <div class="feature-icon">🏡</div>
+        <h3>Home planning</h3>
+        <p>Organize rooms, decor, and furniture within your budget.</p>
+    </article>
+    <article class="feature-card">
+        <div class="feature-icon">🎉</div>
+        <h3>Party planning</h3>
+        <p>Break down event expenses and make a practical checklist.</p>
+    </article>
+    <article class="feature-card">
+        <div class="feature-icon">💎</div>
+        <h3>Jewelry ideas</h3>
+        <p>Explore accessories that complement your outfit and occasion.</p>
+    </article>
+</section>
+{% endblock %}

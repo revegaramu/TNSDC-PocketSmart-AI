@@ -1,0 +1,74 @@
+<div class="result-card">
+    <div class="result-topline">
+        <span class="result-badge">✦ Your plan</span>
+        {% if result.ai_provider == "gemini" %}
+            <span class="provider-badge">AI-generated</span>
+        {% else %}
+            <span class="provider-badge">Smart recommendations</span>
+        {% endif %}
+    </div>
+
+    <h2>{{ result.title }}</h2>
+    <p class="result-summary">{{ result.summary }}</p>
+
+    <div class="result-total">
+        <span>Estimated total</span>
+        <strong>₹{{ "%.2f"|format(result.estimated_total|float) }}</strong>
+    </div>
+
+    <div class="recommendation-items">
+        {% for item in result.items %}
+            <article class="recommendation-item">
+                <div class="item-heading">
+                    <h3>{{ item.name }}</h3>
+                    <strong>
+                        ₹{{ "%.2f"|format(item.estimated_cost|float) }}
+                    </strong>
+                </div>
+                <p>{{ item.description }}</p>
+            </article>
+        {% endfor %}
+    </div>
+
+    {% if result.tips %}
+        <div class="tips-box">
+            <h3>Smart tips</h3>
+            <ul>
+                {% for tip in result.tips %}
+                    <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if result.shopping_links %}
+        <div class="tips-box">
+            <h3>Shopping links</h3>
+            <ul>
+                {% for link in result.shopping_links %}
+                    {% if link.url and link.title %}
+                        <li>
+                            <a href="{{ link.url }}"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                {{ link.title }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if result.notes %}
+        <div class="notes-box">
+            <strong>Your preferences</strong>
+            <p>{{ result.notes }}</p>
+        </div>
+    {% endif %}
+
+    <p class="disclaimer">
+        Estimates are for planning purposes only. Verify actual prices,
+        availability, and terms before making purchases or bookings.
+    </p>
+</div>

@@ -1,0 +1,14 @@
+# Test Cases
+
+| ID | Test Case | Expected Result | Status |
+|---|---|---|---|
+| TC01 | Register new user | Account created | Pass |
+| TC02 | Register duplicate email | Error displayed | Pass |
+| TC03 | Login valid credentials | Dashboard opens | Pass |
+| TC04 | Login invalid password | Error displayed | Pass |
+| TC05 | Generate home plan | Recommendation displayed | Pass |
+| TC06 | Generate party plan | Recommendation displayed | Pass |
+| TC07 | Generate jewelry plan | Recommendation displayed | Pass |
+| TC08 | Upload valid image | Image accepted | Pass |
+| TC09 | View history | Saved recommendations displayed | Pass |
+| TC10 | Logout | User returned to login/home | Pass |

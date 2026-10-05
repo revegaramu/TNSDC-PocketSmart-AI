@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Party Planner — PocketSmart AI{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <span class="eyebrow">PARTY PLANNER</span>
+    <h1>Celebrate more. <span class="gradient-text">Stress less.</span></h1>
+    <p>Build an event budget that works for your celebration.</p>
+</section>
+
+<div class="planner-layout">
+    <section class="form-card planner-card">
+        <form data-recommendation-form action="/generate-party" method="post">
+            <label for="occasion">Occasion</label>
+            <input id="occasion" name="occasion" type="text"
+                   maxlength="80" placeholder="Birthday, graduation..."
+                   required>
+
+            <label for="budget">Total budget (₹)</label>
+            <input id="budget" name="budget" type="number"
+                   min="1" max="100000000" step="1" required>
+
+            <label for="guests">Number of guests</label>
+            <input id="guests" name="guests" type="number"
+                   min="1" max="10000" value="20" required>
+
+            <label for="location_type">Venue type</label>
+            <select id="location_type" name="location_type">
+                <option value="Indoor">Indoor</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Home">At home</option>
+                <option value="Hall">Function hall</option>
+            </select>
+
+            <label for="notes">Additional preferences</label>
+            <textarea id="notes" name="notes" rows="4"
+                      maxlength="500"
+                      placeholder="Theme, food preferences, activities..."></textarea>
+
+            <p class="form-message" aria-live="polite"></p>
+            <button class="button button-full" type="submit">
+                Generate my party plan
+            </button>
+        </form>
+    </section>
+
+    <aside class="planner-aside">
+        <div class="aside-icon">🎉</div>
+        <h2>Make every detail count.</h2>
+        <p>Organize your budget around the venue, food, decor,
+           entertainment, and a contingency reserve.</p>
+        <div class="mini-tip">
+            <strong>Smart tip</strong>
+            <p>Confirm the guest count before making food and venue bookings.</p>
+        </div>
+    </aside>
+</div>
+
+<section id="recommendation-result" class="result-container"></section>
+{% endblock %}

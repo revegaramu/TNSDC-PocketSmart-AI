@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Your Recommendation — PocketSmart AI{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <span class="eyebrow">{{ category|title }} RECOMMENDATION</span>
+    <h1>Your personalized <span class="gradient-text">plan.</span></h1>
+    <p>Created on {{ created_at }}</p>
+</section>
+
+{% include "result_fragment.html" %}
+
+<div class="result-actions">
+    <a class="button button-secondary" href="/dashboard">
+        Back to dashboard
+    </a>
+    <button class="button" type="button" onclick="window.print()">
+        Print recommendation
+    </button>
+</div>
+{% endblock %}
